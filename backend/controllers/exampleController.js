@@ -10,4 +10,15 @@ router.get('/', (req, res) =>{
     .catch(err => req.json(err))
 })
 
+router.post('/', upload.single("image"), (req, res) => {
+    req.body.image = `/img/${req.file.filename}${path.extname(req.file.originalname)}`
+    Example.create(req.body)
+    .then(img => {
+        res.json(img)
+    })
+    .catch(err => {
+        res.json(err)
+    })
+})
+
 module.exports = router
