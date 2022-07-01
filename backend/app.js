@@ -4,11 +4,11 @@ const app = express()
 const port = 5555
 
 app.use(express.json())
-app.use(expres.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect('mongodb://localhost/exampledb')
 
-const exampleController = require('')
+const exampleController = require('./controllers/exampleController')
 app.use('/example', exampleController)
 
 app.listen(port, () => console.log(`server running on ${port}`))
